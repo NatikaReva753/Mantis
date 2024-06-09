@@ -6,10 +6,9 @@
     "username": "administrator",
     "password": "root"
   },
-  "db": {
+  "ftp": {
     "host": "localhost",
-    "name": "bugtracker",
-    "user": "root",
-    "password": ""
+    "username": "mantis",
+    "password": "mantis"
   }
 }

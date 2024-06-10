@@ -2,6 +2,7 @@ from selenium import webdriver
 from fixture.session import SessionHelper
 from fixture.project import ProjectHelper
 from fixture.james import JamesHelper
+from fixture.soap import SoapHelper
 
 
 
@@ -20,6 +21,7 @@ class Application:
         self.session = SessionHelper(self)
         self.project = ProjectHelper(self)
         self.james = JamesHelper(self)
+        self.soap = SoapHelper(self)
         self.config = config
         self.base_URL = config['web']['baseURL']
 

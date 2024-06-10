@@ -4,6 +4,7 @@ from fixture.project import ProjectHelper
 from fixture.james import JamesHelper
 
 
+
 class Application:
 
     def __init__(self, browser, config):

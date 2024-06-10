@@ -33,7 +33,7 @@ class JamesHelper:
 
         def is_users_registered(self, username):
             self.write("verify %s\n" % username)
-            res = self.telnet.expect([b"exists", b"does not exist"])
+            res = self.telnet.expect([b'exists', b'does not exist'])
             return res[0] == 0
 
         def create_user(self, username, password):

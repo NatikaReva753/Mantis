@@ -25,13 +25,7 @@ class SessionHelper:
 
     def logout(self):
         wd = self.app.wd
-        try:
-            wd.find_element_by_css_selector("li[class='grey']")
-            wd.find_element_by_css_selector("span[class='user-info']").click()
-        except:
-            pass
-        wd.find_element_by_xpath("//a[contains(@href, '/mantisbt-2.24.4/logout_page.php')]").click()
-        wd.find_element_by_name("username")
+        wd.find_element_by_link_text("Logout").click()
 
     def ensure_logout(self):
         wd = self.app.wd

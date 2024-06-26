@@ -1,6 +1,3 @@
-from model.project import Project
-
-
 class ProjectHelper:
 
     project_cache = None
@@ -10,30 +7,25 @@ class ProjectHelper:
 
     def open_project_page(self):
         wd = self.app.wd
-        if not (wd.current_url.endswith("/manage_proj_page.php") and len(
-                wd.find_elements_by_xpath("//button[@type='submit']")) > 0):
-            wd.find_element_by_link_text("Manage").click()
-            wd.find_element_by_link_text("Manage Projects").click()
+        wd.find_element_by_link_text("Manage").click()
+        wd.find_element_by_link_text("Manage Projects").click()
 
     def create(self, project):
         wd = self.app.wd
         self.open_project_page()
-        # init group creation
         wd.find_element_by_xpath("//input[@value='Create New Project']").click()
         self.fill_project_form(project)
-        # submit group creation
         wd.find_element_by_xpath("//input[@value='Add Project']").click()
         self.return_to_project_page()
-        self.project_cache = None
 
     def fill_project_form(self, project):
         wd = self.app.wd
         wd.find_element_by_name("name").click()
         wd.find_element_by_name("name").clear()
-        self.change_field_value("name", project.name)
+        wd.find_element_by_name("name").send_keys(project.name)
         wd.find_element_by_name("description").click()
         wd.find_element_by_name("description").clear()
-        self.change_field_value("description", project.description)
+        wd.find_element_by_name("description").send_keys(project.description)
 
     def change_field_value(self, field_name, text):
         wd = self.app.wd
@@ -45,9 +37,9 @@ class ProjectHelper:
     def return_to_project_page(self):
         wd = self.app.wd
         if not (wd.current_url.endswith("/manage_proj_page.php") and len(
-                wd.find_elements_by_by_xpath("//button[@type='submit']")) > 0):
-            wd.find_element_by_css_selector("i.menu-icon.fa.fa-gears").click()
-            wd.find_element_by_link_text(u"Управление проектами").click()
+                wd.find_elements_by_by_xpath("//input[@value='Create New Project']")) > 0):
+            wd.find_element_by_link_text("Manage").click()
+            wd.find_element_by_link_text("Manage Projects").click()
 
     def delete_project_by_id(self, id):
         wd = self.app.wd

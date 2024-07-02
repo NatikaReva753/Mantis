@@ -1,3 +1,5 @@
+import random
+import string
 class ProjectHelper:
 
     project_cache = None
@@ -53,3 +55,8 @@ class ProjectHelper:
     def select_project_by_id(self, id):
         wd = self.app.wd
         wd.find_element_by_css_selector('a[href ^= "manage_proj_edit_page.php?project_id=' + str(id) + '"]').click()
+
+    @staticmethod
+    def random_name(maxlen):
+        symbols = string.ascii_letters + string.digits
+        return "".join([random.choice(symbols) for i in range(maxlen)])
